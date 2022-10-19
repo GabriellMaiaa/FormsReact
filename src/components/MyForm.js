@@ -5,7 +5,9 @@ const MyForm = ({user}) => {
   // 6 -Controled Inputs
   // 3 - Gerenciamneto de dados
   const[name, setName] = useState(user ? user.name : "");
-  const [email, setEmail] = useState(user ? user.email : "");
+  const[email, setEmail] = useState(user ? user.email : "");
+  const[bio, setBio] = useState("")
+  const[teste, setTeste] = useState("")
 
   const handleChange = (e) => {
     setName(e.target.value)
@@ -17,12 +19,14 @@ const MyForm = ({user}) => {
   const handleSubmit = (e) =>{
       e.preventDefault()
       console.log('Enviando o formulário')
-      console.log(name, email)
+      console.log(name, email, bio, teste)
 
   // 7 - Limpando formulários - Tudo é executado após todas
   // as funções acima
     setName("");
     setEmail("");
+    setBio("");
+    setTeste("");
   }
 
   return (
@@ -43,7 +47,24 @@ const MyForm = ({user}) => {
                 <input type="email" name="email" placeholder='Digite o seu email' 
                 onChange={(e) => setEmail(e.target.value)} value={email}/> {/**Como por a função diretamente no valor */}
             </label>
+            {/**8 - Textarea */}
+            <label>
+              <span>Bio:</span>
+              <textarea name="bio" placeholder='Descrição do usuário'
+              onChange={(e) => {setBio(e.target.value)}} value={bio}></textarea>
+            </label>
+            <label>
+              <span>Sobre você</span>
+              <input type="textarea" name='Sobre você' 
+              placeholder='Digite aqui suas experiências' onChange={(e) => {setTeste(e.target.value)}}
+              value={teste}/>
+            </label>
+            {/** 9 - SELECT no React */}
+            <label>
+              <span>Função Nova</span>
+            </label>
             <input type="submit" value="enviar" />
+
         </form>
        
     </div>
