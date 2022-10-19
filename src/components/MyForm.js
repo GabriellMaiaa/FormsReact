@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import './MyForm.css'
 
-const MyForm = () => {
+const MyForm = ({user}) => {
+  // 6 -Controled Inputs
   // 3 - Gerenciamneto de dados
-  const[name, setName] = useState();
-  const [email, setEmail] = useState();
+  const[name, setName] = useState(user ? user.name : "");
+  const [email, setEmail] = useState(user ? user.email : "");
 
   const handleChange = (e) => {
     setName(e.target.value)
@@ -17,7 +18,11 @@ const MyForm = () => {
       e.preventDefault()
       console.log('Enviando o formulário')
       console.log(name, email)
-   
+
+  // 7 - Limpando formulários - Tudo é executado após todas
+  // as funções acima
+    setName("");
+    setEmail("");
   }
 
   return (
@@ -27,7 +32,8 @@ const MyForm = () => {
             {/**1 - Criação de Formss */}
             <div>
                 <label htmlFor="name">Nome: </label>
-                    <input type="text" name="name" placeholder='Digite o seu nome' onChange={handleChange}/>
+                    <input type="text" name="name" placeholder='Digite o seu nome' 
+                    onChange={handleChange} value={name}/>
                     
             </div>
             {/**Label envolvendo o Input */}
@@ -35,7 +41,7 @@ const MyForm = () => {
               {/**Simplificação de manipulação de State */}
                 <span>E-mail</span>
                 <input type="email" name="email" placeholder='Digite o seu email' 
-                onChange={(e) => setEmail(e.target.value)}/> {/**Como por a função diretamente no valor */}
+                onChange={(e) => setEmail(e.target.value)} value={email}/> {/**Como por a função diretamente no valor */}
             </label>
             <input type="submit" value="enviar" />
         </form>
