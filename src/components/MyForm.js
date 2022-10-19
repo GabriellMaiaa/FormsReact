@@ -8,6 +8,7 @@ const MyForm = ({user}) => {
   const[email, setEmail] = useState(user ? user.email : "");
   const[bio, setBio] = useState("")
   const[teste, setTeste] = useState("")
+  const[role, setRole] = useState("")
 
   const handleChange = (e) => {
     setName(e.target.value)
@@ -19,7 +20,7 @@ const MyForm = ({user}) => {
   const handleSubmit = (e) =>{
       e.preventDefault()
       console.log('Enviando o formulário')
-      console.log(name, email, bio, teste)
+      console.log(name, email, bio, teste, role)
 
   // 7 - Limpando formulários - Tudo é executado após todas
   // as funções acima
@@ -62,6 +63,11 @@ const MyForm = ({user}) => {
             {/** 9 - SELECT no React */}
             <label>
               <span>Função Nova</span>
+                <select name="role" onChange={(e) => {setRole(e.target.value)}} value={role}>
+                  <option value="user">Usuário</option>
+                  <option value="editor">Editor</option>
+                  <option value="chefe">Chefe</option>
+                </select>
             </label>
             <input type="submit" value="enviar" />
 

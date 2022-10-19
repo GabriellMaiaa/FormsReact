@@ -6,7 +6,8 @@ function App() {
   return (
     <div className="App">
       <h2>Formulário Teste</h2>
-      <MyForm user={{name: "Gabriel Ribeiro Maia", email: "gribeiromaia736@gmail.com"}}/>
+      <MyForm user={{name: "Gabriel Ribeiro Maia", email: "gribeiromaia736@gmail.com"
+    , role: 'chefe', bio: "Sou um Empresário"}}/>
     </div>
   );
 }
